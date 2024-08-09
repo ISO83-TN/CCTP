@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Accueil</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h2>Liste des Projets</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Numéro affaire</th>
+                <th>Désignation affaire</th>
+                <th>Client</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for project in projects %}
+            <tr>
+                <td>{{ project.id }}</td>
+                <td>{{ project.name }}</td>
+                <td>{{ project.client }}</td>
+                <td>
+                    <a href="{{ url_for('project', project_id=project.id) }}">Ouvrir</a>
+                    <button>Supprimer</button>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <button>Créer un nouveau projet</button>
+</body>
+</html>
